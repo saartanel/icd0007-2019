@@ -1,0 +1,7 @@
+<form name="form" method="post">
+    <input type="hidden" name="cmd" value="{{ $cmd }}">
+    {{ $username }}: <br><input type="text" name="username" value="{{ $userName }}"><br>
+    {{ $password }}: <br><input type="password" name="password" value="{{ $formPassword }}"><br>
+    <p id="error-block" class="error-block" tpl-if="(!empty($errorLogin))">{{ $errorLogin }}</p>
+    <input type="submit" class="button" value="{{ $login }}" name="loginButton">
+</form>

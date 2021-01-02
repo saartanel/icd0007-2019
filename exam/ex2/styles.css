@@ -1,0 +1,13 @@
+p{
+    color: red;
+    font-style: italic;
+}
+
+#a, #d{
+    color: green;
+    font-style: normal;
+}
+
+p{
+    color: blue;
+}

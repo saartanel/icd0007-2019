@@ -1,0 +1,11 @@
+<form name="form" method="post">
+    <input type="hidden" name="cmd" value="{{ $cmd }}">
+    {{ $firstname }}: <br><input type="text" class="eesnimi" name="firstName" value="{{ $firstName }}"><br>
+    <p id="error-block" class="error-block" tpl-if="(!empty($errorFName))">{{ $errorFName }}</p>
+    {{ $lastname }}: <br><input type="text" class="perenimi" name="lastName" value="{{ $lastName }}"><br>
+    <p id="error-block" class="error-block" tpl-if="(!empty($errorLName))">{{ $errorLName }}</p>
+    {{ $phone_lang1 }}: <br><input type="text" class="telefon" name="phone1" maxlength="20" value="{{ $phone1 }}"><br>
+    {{ $phone_lang2 }}: <br><input type="text" class="telefon" name="phone2" maxlength="20" value="{{ $phone2 }}"><br>
+    {{ $phone_lang3 }}: <br><input type="text" class="telefon" name="phone3" maxlength="20" value="{{ $phone3 }}"><br>
+    <input type="submit" class="button" value="{{ $submit }}" name="submitButton">
+</form>

@@ -1,0 +1,127 @@
+Eksamiks vajalikud failid asuvad https://bitbucket.org/mkalmo/icd0007exam2.
+Töö tegemiseks kloongige see projekt oma arvutisse.
+
+Kopeerige see tekst, misa praegu loete endale kloonitud projekti faili info.txt.
+
+Töö esitamiseks peaksite kopeerima kataloogid ex1, ex2, ex3, ex4
+ning faili info.txt oma projekti (icd0007) reposse kataloogi nimega exam.
+
+Soovitatav on seda teha kohe. Kui ajast jääb väheks, siis saate olemasoleva
+töö kiiresti ära commit-ida. Hilinenud commit-i ei arvesta.
+
+Töö peab olema esitatud enne kella 17:30 (aega on 90 minutit).
+
+Teooriaküsimused
+
+  Iga küsimuse vastus peab jääma alla 200 märgi.
+  Iga küsimus annab kuni 4 punkti.
+
+  1. Kui brauser näitab soovitud tulemust ka standardile mittevastava Html
+     koodi korral, siis miks peaks standardit jälgima?
+
+     Standardit järgides tead, et kood peaks kindlasti töötama korrektselt. Erinevatel brauseritel võvad olla erinevad
+     vaikeväärtused standardite mittejälgimisel, ning selle pärast võib brauseris kood kuvada erinevalt.
+
+  2. Http protokolli kohaselt vastab server päisega
+     Content-type: . Miks see vajalik on?
+
+     Content-type päis ütleb vastustes kliendile, milline on tagastatud sisu sisutüüp tegelikult on ja
+     mida ta peaks peale sellega hakkama/mis rakendust kasutada kuvamisel.
+
+  3. Http GET päring ei sobi kustutamise käsu andmiseks. Miks?
+
+     GET päring võib kustutatud andmeid hoida vahemälus, mis lehe värskendamisel tagasi tuuakse.
+
+  4. Mis on pahasti alloleva koodiga? Kuidas see avalduda võiks?
+     $sql = 'DELETE FROM contacts WHERE id = ' . $_POST['id'];
+
+     Välja on toodud SQL injection, vormi sisestades võib anda id väärtusele mingi teise tabeli väärtuse,
+     ning sellega kustutada tahtmatuid andmeid.
+
+Ülesanne 1 (6 punkti)
+
+  Html failide struktuur asub kataloogis "ex1".
+
+  Kirjutage järgmised relatiivsed lingid:
+
+  index.html -> b.html (failis index.html on link, mis viitab failile b.html)
+  b.html -> e.html
+  e.html -> d.html
+  d.html -> b.html
+  b.html -> index.html
+
+  Lahenduse kontrollimiseks on test ex1/tests.php
+  Test eeldab, et failid on saadaval aadressilt http://localhost:8080
+  Seega testi kasutamiseks käivitage enne testi käivitamist ex1 kataloogist
+  php server (php -S localhost:8080).
+
+Ülesanne 2 (8 punkti)
+
+  Failis ex2/css.html on numbrid 1-5. Muutke faili styles.css nii, et
+  täidetud oleks allolevad tingimused.
+
+    • 1 on sinine ja italic
+    • 2 on roheline ja mitte italic
+    • 3 on sinine ja italic
+    • 4 on must (muutmata) ja mitte italic
+    • 5 on roheline ja mitte italic
+
+  Faili css.html muuta ei tohi.
+  Failis styles.css võite muuta ainult kommentaariga märgitud kohti (css selector-eid).
+
+Ülesanne 3 (10 punkti)
+
+  Kataloogis ex3 on osa rakendusest, mille kirjeldus järgneb.
+
+  Muuta võite ainult faili index.php.
+
+  Esmakordsel pöördumisel peaks näidatama värvi valiku vormi (mall form.html).
+
+  Kui kasutaja valib värvi ja vajutab "Saada" saadetakse vorm POST päringuga.
+  Vormi vastu võtmisel toimub ümbersuunamine lehele, millel on info valitud
+  värvi kohta (POST-REDIRECT-GET muster ja mall content.html).
+
+  Valitud värvi nime tuleb kasutajale näidata eesti keeles (tõlked on failis index.php)
+  Samas ümbersuunamise url-is ei tohiks eesti keelt kasutada. Ümbersuunamisel on
+  parameetri nimi "color" ja väärtuseks "red" või "blue".
+
+  Kui te pole varem Html-i radio nuppe kasutanud, siis saate lihtsalt kontrollida,
+  millisel kujul vastav info edastatakse: var_dump($_POST).
+
+  Kirjutage puuduvad osad, et rakendus tööle hakkaks.
+
+  Infoks: renderTemplate() on meetod, mis tagastab failist loetud malli sisu,
+          milles on tehtud mõned asendused. Meetodi esimene argument ütleb, millist
+          malli näidata ja teine argument on sõnastik, milles on väärtused mallis
+          kasutatavatele muutujatele. Antud ülesandes on mallides muutujad $color ja $fileName.
+
+          Sõne "{{ $color }}" asendatakse sõnastikust saadud võtme "color" väärtusega.
+
+          tpl-include="{{ $fileName }}" laeb antud kohale sõnastikust saadud võtme
+          "fileName" väärtusele vastava alammalli.
+
+Ülesanne 4 (10 punkti)
+
+  Failis ex4/ex4.php on kood, mis teeb andmebaasi ühenduse ja käivitab failis data.sql
+  olevad SQL laused. Need SQL laused sisaldavad infot isikute ja nende
+  telefoninumbrite kohta.
+
+  Failis ex4.php on teie eest ka päring valmis kirjutatud ja seega seda faili
+  te muuta ei tohi.
+
+  Andmebaasist saadud ridade põhjal tuleks teha Person tüüpi objektid. Selleks
+  on failis functions.php funktsioon statementToPersonList(), mille peaksite
+  lõpuni kirjutama.
+
+  Päringus on määratud ka sorteerimise järjekord ja ka väljundis peaks sama
+  järjekord säilima (-3 punkti, kui järjekord pole õige).
+
+  Kui kood on õige peaks vastus olema:
+    Alice: n1, n2
+    Alice: n5
+    Bob: n3
+    Carol: n4
+
+  Andmebaasina kasutatakse mälupõhist andmebaasi ja on võimalik, et teie Php seadistuses
+  pole vastavat draiverit automaatselt laetud. Seega peaksite koodi käivitama nii:
+    php -d extension=pdo_sqlite ex4.php

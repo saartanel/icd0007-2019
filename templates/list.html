@@ -1,0 +1,13 @@
+<table>
+	<tr>
+		<td>{{ $firstname }}</td>
+		<td>{{ $lastname }}</td>
+		<td>{{ $numbers }}</td>
+
+	</tr>
+	<tr tpl-foreach="$contacts as $c">
+		<td><a href="?command=edit&id={{ $c->id }}">{{ $c->firstName }}</a></td>
+		<td>{{ $c->lastName }}</td>
+		<td>{{ $c->numbers }}</td>
+	</tr>
+</table>

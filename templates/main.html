@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="utf-8">
+    <title>Harjutustund 1</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<ul>
+    <div id="lang">
+        <a id="lang-et-link" href="?translate=et&amp;command={{ $command }}">{{ $ET }}</a>
+        <a id="lang-en-link" href="?translate=en&amp;command={{ $command }}">{{ $EN }}</a>
+    </div>
+    <br>
+    <div id=nav tpl-if="$_SESSION['loggedin']">
+        <li><a href="?command=show_list_page" id="list-page-link">{{ $listmenu }}</a></li>
+        <li><a href="?command=show_add_page" id="add-page-link">{{ $addmenu }}</a></li>
+        <li><a href="?command=logout" id="log-out-link">{{ $logout }}</a></li>
+    </div>
+</ul>
+<br>
+<div id="main" tpl-include="{{ $templates }}"></div>
+<footer>
+    <p>Taneli tehtud :^)</p>
+</footer>
+</body>
+</html>
+
